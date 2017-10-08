@@ -3,5 +3,5 @@ test yellowfin
 x
 s
 s
-s
+sz
 sx
