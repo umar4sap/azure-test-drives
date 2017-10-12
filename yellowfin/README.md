@@ -3,7 +3,7 @@ test yellowfin
 x
 s
 s
-sz
+szx
 sx
 dd
 ss
