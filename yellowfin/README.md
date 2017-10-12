@@ -7,5 +7,5 @@ sz
 sx
 dd
 s
-d
+dd
 d
