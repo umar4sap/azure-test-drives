@@ -6,6 +6,6 @@ s
 sz
 sx
 dd
-s
+ss
 dddd
 ds
