@@ -54,7 +54,7 @@
         },
         "storageContainerName": {
             "type": "string",
-            "defaultValue": "sr",
+            "defaultValue": "ci",
             "metadata": {
                 "description": "storage container name"
             }
@@ -71,7 +71,7 @@
         "tag": {
             "value1": "barracudaWAF"
         },
-         "baseUrl": "https://aztdrepo.blob.core.windows.net/barracuda-waf",
+         "baseUrl": "https://raw.githubusercontent.com/umar2code/azure-test-drives/staging/barracuda",
         "StorageUrl": "[concat(variables('baseurl'),'/nested/storage.json')]",
         "PublicipUrl": "[concat(variables('baseurl'),'/nested/publicip.json')]",
         "BarracudaNetworkinterfaceUrl": "[concat(variables('baseurl'),'/nested/barracuda-nic.json')]",
