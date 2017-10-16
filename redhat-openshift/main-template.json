@@ -5,9 +5,10 @@
         "_artifactsLocation": {
             "type": "string",
             "metadata": {
-                "description": "Base URL for Template FIles"
+                "description": "Base URL for Template FIles",
+                "artifactsBaseUrl": ""
             },
-            "defaultValue": "https://aztdrepo.blob.core.windows.net/redhatopenshift"
+            "defaultValue": "https://aztdrepo.blob.core.windows.net/openshift-v35-td"
         },
         "masterVmSize": {
             "type": "string",
@@ -124,24 +125,25 @@
             }
         },
         "openshiftClusterPrefix": {
-            "defaultValue": "openshift",
+            "defaultValue": "opnsh",
             "type": "string",
             "minLength": 1,
-            "maxLength": 5,
+            "maxLength": 20,
             "metadata": {
                 "description": "OpenShift cluster prefix.  Used to generate master, and node hostnames.  Maximum of 5 characters."
             }
         },
         "adminUsername": {
             "type": "string",
-            "defaultValue": "testuser",
             "minLength": 1,
+            "defaultValue": "testuser",
             "metadata": {
                 "description": "Administrator username on all VMs and first OpenShift Username"
             }
         },
         "cloudAccessUsername": {
             "type": "string",
+            "defaultValue":"openshifttestdrive",
             "minLength": 1,
             "metadata": {
                 "description": "Cloud Access Username"
@@ -149,6 +151,7 @@
         },
         "cloudAccessPassword": {
             "type": "securestring",
+            "defaultValue":"r3dhatd3ploy!",
             "minLength": 1,
             "metadata": {
                 "description": "Cloud Access password"
@@ -156,6 +159,7 @@
         },
         "cloudAccessPoolId": {
             "type": "string",
+            "defaultValue":"8a85f981592353bd0159257750c95239",
             "minLength": 1,
             "metadata": {
                 "description": "Pool ID with RHEL and OpenShift entitlements"
@@ -178,7 +182,7 @@
         },
         "keyVaultName": {
             "type": "string",
-            "defaultValue": "bbopenshiftkeyvault6",
+            "defaultValue": "bbopenshiftkeyvault7",
             "minLength": 1,
             "metadata": {
                 "description": "Name of the Key Vault"
@@ -186,8 +190,8 @@
         },
         "keyVaultSecret": {
             "type": "securestring",
-            "defaultValue": "privatekey6",
             "minLength": 1,
+            "defaultValue": "privatekey6",
             "metadata": {
                 "description": "Key Vault Secret Name that contains the Private Key"
             }
@@ -212,7 +216,7 @@
         "nodeSubnetName": "[concat(variables('openshiftNodeHostname'), 'subnet')]",
         "openshiftMasterPublicIpDnsLabel": "[concat(variables('openshiftMasterHostname'), 'dns', take(uniqueString(concat(resourceGroup().name, 'mdns')), 8))]",
         "nodeLbPublicIpDnsLabel": "[concat(variables('openshiftNodeHostname'), 'dns', take(uniqueString(concat(resourceGroup().name, 'ndns')), 8))]",
-        "dataDiskSize": "25",
+        "dataDiskSize": "128",
         "openshiftPassword": "password",
         "masterLoadBalancerName": "[concat(variables('openshiftMasterHostname'), 'lb')]",
         "masterPublicIpAddressId": "[resourceId('Microsoft.Network/publicIPAddresses', variables('openshiftMasterPublicIpDnsLabel'))]",
@@ -236,7 +240,7 @@
         },
         "sshPrivateKey": {
             "reference": {
-                "keyvault": {
+                "keyVault": {
                     "id": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('keyVaultResourceGroup'), '/providers/Microsoft.KeyVault/vaults/', parameters('keyVaultName'))]"
                 },
                 "secretName": "[parameters('keyVaultSecret')]"
@@ -963,7 +967,7 @@
                     },
                     "sshPrivateKey": {
                         "reference": {
-                            "keyvault": {
+                            "keyVault": {
                                 "id": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('keyVaultResourceGroup'), '/providers/Microsoft.KeyVault/vaults/', parameters('keyVaultName'))]"
                             },
                             "secretName": "[parameters('keyVaultSecret')]"
@@ -982,13 +986,9 @@
             "type": "string",
             "value": "[reference(variables('nodeLbPublicIpDnsLabel')).dnsSettings.fqdn]"
         },
-        "OpenShiftUsername": {
+        "OpenShiftUserandPassword": {
             "type": "string",
-            "value": "testdrive"
-        },
-        "OpenShiftPassword": {
-            "type": "string",
-            "value": "[variables('openshiftPassword')]"
+            "value": "[concat('OpenShift Username is: testdrive  --  Password is: ', variables('openshiftPassword'))]"
         }
     }
 }
