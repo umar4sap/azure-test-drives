@@ -182,7 +182,7 @@
         },
         "keyVaultName": {
             "type": "string",
-            "defaultValue": "bbopenshiftkeyvault7",
+            "defaultValue": "bbopenshiftkeyvault6",
             "minLength": 1,
             "metadata": {
                 "description": "Name of the Key Vault"
