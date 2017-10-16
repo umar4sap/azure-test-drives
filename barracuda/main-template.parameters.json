@@ -6,22 +6,22 @@
             "value": "West US"
         },
         "publicIPdnsPrefixBarracuda": {
-            "value": "GEN-UNIQUE"
+            "value": "se"
         },
         "publicIPdnsPrefixBadstore": {
-            "value": "GEN-UNIQUE"
+            "value": "xc"
         },
         "username": {
             "value": "gainuser"
         },
         "adminPassword": {
-            "value": "GEN-PASSWORD"
+            "value": "Ashpassword123"
         },
         "storageContainerName": {
-            "value": "GEN-UNIQUE"
+            "value": "ci"
         },
         "storageAccountName": {
-            "value": "GEN-UNIQUE"
+            "value": "bsrt"
         }
     }
 }
